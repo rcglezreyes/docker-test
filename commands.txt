@@ -1,0 +1,15 @@
+## Comandos para todos los servicios en docker compose
+
+docker compose up -d --build 
+docker system prune -f 
+docker system prune -af
+docker system df
+
+
+## Comandos para un servicio especifico
+
+docker compose down postgres
+docker system prune -f 
+docker compose build postgres
+docker compose up postgres -d
+

@@ -7,15 +7,46 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
     env_file:
       - ./postgres/.env
     networks:
       - net_containers_test
     restart: unless-stopped
 
+  mongodb:
+    container_name: mongodb
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    env_file:
+      - ./mongodb/.env
+    networks:
+      - net_containers_test
+    restart: unless-stopped
+
+  mongoexpress:
+    container_name: mongoexpress
+    build:
+      context: ./mongoexpress
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    env_file:
+      - ./mongoexpress/.env
+    depends_on:
+      - mongodb
+    networks:
+      - net_containers_test
+    restart: unless-stopped
+
 volumes:
   postgres_data:
+  mongodb_data:
 
 networks:
   net_containers_test:
