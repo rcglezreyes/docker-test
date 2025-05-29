@@ -1,4 +1,4 @@
-## Comandos para todos los servicios en docker compose
+## Comandos para todos los servicios en docker compose (archivo por defecto del mismo nombre)
 
 docker compose up -d --build 
 docker system prune -f 
@@ -6,10 +6,23 @@ docker system prune -af
 docker system df
 
 
-## Comandos para un servicio especifico
+## Comandos para un servicio especifico (archivo por defecto del mismo nombre)
 
 docker compose down postgres
 docker system prune -f 
 docker compose build postgres
 docker compose up postgres -d
 
+
+# Comandos para todos los servicios en un archivo .yml de nombre diferente
+docker compose -f directorio/nombre_del_archivo up -d --build 
+docker system prune -f 
+docker system prune -af
+docker system df
+
+## Comandos para un servicio especifico (en un archivo .yml de nombre diferente)
+
+docker compose -f directorio/nombre_del_archivo down postgres
+docker system prune -f 
+docker compose -f directorio/nombre_del_archivo build postgres
+docker compose -f directorio/nombre_del_archivo up postgres -d
