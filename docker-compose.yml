@@ -44,6 +44,17 @@ services:
       - net_containers_test
     restart: unless-stopped
 
+  backend_app:
+    container_name: backend_app
+    build:
+      context: ./backend_app
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - net_containers_test
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   mongodb_data:

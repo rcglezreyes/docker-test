@@ -8,10 +8,10 @@ docker system df
 
 ## Comandos para un servicio especifico (archivo por defecto del mismo nombre)
 
-docker compose down postgres
+docker compose down nombre_del_servicio
 docker system prune -f 
-docker compose build postgres
-docker compose up postgres -d
+docker compose build nombre_del_servicio
+docker compose up nombre_del_servicio -d
 
 
 # Comandos para todos los servicios en un archivo .yml de nombre diferente
@@ -22,7 +22,29 @@ docker system df
 
 ## Comandos para un servicio especifico (en un archivo .yml de nombre diferente)
 
-docker compose -f directorio/nombre_del_archivo down postgres
+docker compose -f directorio/nombre_del_archivo down nombre_del_servicio
 docker system prune -f 
-docker compose -f directorio/nombre_del_archivo build postgres
-docker compose -f directorio/nombre_del_archivo up postgres -d
+docker compose -f directorio/nombre_del_archivo build nombre_del_servicio
+docker compose -f directorio/nombre_del_archivo up nombre_del_servicio -d
+
+## Instalar Python en Mac
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install python
+python3 --version
+pip3 --version
+
+
+## Instalar pip (si no viene incorporado)
+python3 -m ensurepip --upgrade
+
+## Comandos para crear project y app de Django
+python3 -m venv venv
+(Windows) venv\Scripts\activate
+(Mac) source venv/bin/activate
+(Linux) source venv/bin/activate
+pip3 install django
+django-admin startproject virtual_store
+django-admin startapp api_products
+
+## Comando para incluir dependencias en requirements
+pip3 freeze > requirements.txt
