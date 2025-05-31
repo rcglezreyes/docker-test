@@ -48,3 +48,17 @@ django-admin startapp api_products
 
 ## Comando para incluir dependencias en requirements
 pip3 freeze > requirements.txt
+
+
+## Comando para verificar versiones de Node y npm
+node -v
+npm -v
+
+## Comando para crear app de React usando herramienta vite 
+npm create vite@latest frontend_app --template react
+cd frontend_app 
+npm install 
+npm run dev
+
+## Comando para produccion app React
+npm run build
